@@ -41,11 +41,7 @@ defmodule PhoenixTableFilterWeb.TableLive do
           <%= for %{field_name: field_name} <- @headers do %>
             <td>
 
-              <%= Map.fetch(item, field_name)%>
-              <br>
-              <%= field_name %>
-              <br>
-              <%= item.name %>
+              <%= Map.get(item, field_name, "broken") %>
 
             </td>
           <% end %>
