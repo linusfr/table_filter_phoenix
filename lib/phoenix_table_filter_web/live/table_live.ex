@@ -37,18 +37,22 @@ defmodule PhoenixTableFilterWeb.TableLive do
     </tr>
 
       <%= for item <- @items do %>
-        <tr>
-          <%= for %{field_name: field_name} <- @headers do %>
-            <td>
-
-              <%= Map.get(item, field_name, "broken") %>
-
-            </td>
-          <% end %>
-        </tr>
+        <%= if(is_in_filter(item, @filter_word)) do %>
+          <tr>
+            <%= for %{field_name: field_name} <- @headers do %>
+              <td>
+                <%= Map.get(item, field_name, "broken") %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
      <% end %>
     </table>
     """
+  end
+
+  def is_in_filter(item_map, filter_word) do
+     item_map |> Map.values() |> Enum.any?(fn x -> to_string(x) =~ filter_word end)
   end
 
   @spec handle_event(<<_::104>>, map, Phoenix.LiveView.Socket.t()) :: {:noreply, any}
@@ -57,8 +61,6 @@ defmodule PhoenixTableFilterWeb.TableLive do
       assign(socket,
         filter_word: filter
       )
-
-    IO.inspect(filter)
 
     {:noreply, socket}
   end
