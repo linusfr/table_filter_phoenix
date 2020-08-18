@@ -9,6 +9,7 @@ table {
 }
 
 .tableSearchContainer {
+    display: flex;
     padding-top: 50px;
     width: 500px;
 }
@@ -22,7 +23,6 @@ table {
 }
 
 .tableSearchButton {
-    float: right;
     padding: 6px;
     margin-top: 8px;
     margin-right: 16px;
@@ -30,4 +30,5 @@ table {
     font-size: 17px;
     border: none;
     cursor: pointer;
+    margin-left: 10px;
 }

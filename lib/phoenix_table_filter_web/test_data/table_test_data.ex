@@ -3,17 +3,11 @@ defmodule PhoenixTableFilterWeb.Data do
   alias PhoenixTableFilterWeb.TableHeader
 
   headers = [
-    %TableHeader{field_name: "name", sortable: true, title: "Gerätename"},
-    %TableHeader{field_name: "type", sortable: true, title: "Gerätetyp"},
-    %TableHeader{field_name: "description", sortable: true, title: "Gerätebeschreibung"},
-    %TableHeader{field_name: "location", sortable: true, title: "Adresse"}
+    %TableHeader{:field_name => :name, sortable: true, title: "Gerätename"},
+    %TableHeader{:field_name => :type, sortable: true, title: "Gerätetyp"},
+    %TableHeader{:field_name => :description, sortable: true, title: "Gerätebeschreibung"},
+    %TableHeader{:field_name => :location, sortable: true, title: "Adresse"}
   ]
-
-  def foo(a) when a in 1..3 do
-    :ok
-  end
-
-  def foo(_a), do: :error
 
   devices = [
     %Device{
