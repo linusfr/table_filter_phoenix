@@ -9,6 +9,12 @@ defmodule PhoenixTableFilterWeb.Data do
     %TableHeader{field_name: "location", sortable: true, title: "Adresse"}
   ]
 
+  def foo(a) when a in 1..3 do
+    :ok
+  end
+
+  def foo(_a), do: :error
+
   devices = [
     %Device{
       name: "TestName1",

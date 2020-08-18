@@ -3,6 +3,7 @@ defmodule PhoenixTableFilterWeb.TableLive do
 
   alias PhoenixTableFilterWeb.Data
 
+  @spec mount(any, any, Phoenix.LiveView.Socket.t()) :: {:ok, any}
   def mount(_params, _session, socket) do
     data = Data.getData()
     socket = assign(socket, headers: List.first(data), devices: List.last(data))
@@ -13,23 +14,31 @@ defmodule PhoenixTableFilterWeb.TableLive do
   # <%= @brightness %>%
   def render(assigns) do
     ~L"""
-    <h1 style="width:200px; margin:0 auto;">Geräte</h1>
+    <h1 class="caption">Geräte</h1>
 
-    <table style="width:100%; padding-top:50px;">
+    <table>
 
+    <div class="tableSearchContainer">
+      <form>
+        <input class="tableSearchInput" type="text" placeholder="..." name="search">
+        <button class="tableSearchButton" type="submit">Filter</button>
+      </form>
+    </div>
+
+    <tr>
+      <%= for %{title: t} <- @headers do %>
+        <th>
+          <%= t %>
+        </th>
+      <% end %>
+    </tr>
+
+      <%= for %{name: n, type: t, description: d, location: l} <- @devices do %>
       <tr>
-        <%= for header <- @headers do %>
-          <th>
-            <%= header.title %>
-          </th>
-        <% end %>
-      </tr>
-      <%= for device <- @devices do %>
-      <tr>
-          <td><%= device.name %></td>
-          <td><%= device.type %></td>
-          <td><%= device.description %></td>
-          <td><%= device.location %></td>
+          <td><%= n %></td>
+          <td><%= t %></td>
+          <td><%= d %></td>
+          <td><%= l %></td>
       </tr>
      <% end %>
     </table>

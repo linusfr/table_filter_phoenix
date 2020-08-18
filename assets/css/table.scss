@@ -1,0 +1,33 @@
+table {
+    width: 100%;
+    padding-top: 10px;
+}
+
+.caption {
+    width: 200px;
+    margin: 0 auto;
+}
+
+.tableSearchContainer {
+    padding-top: 50px;
+    width: 500px;
+}
+
+.tableSearchInput {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+    width: 200px;
+}
+
+.tableSearchButton {
+    float: right;
+    padding: 6px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
