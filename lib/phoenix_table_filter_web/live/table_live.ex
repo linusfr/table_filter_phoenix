@@ -52,10 +52,9 @@ defmodule PhoenixTableFilterWeb.TableLive do
   end
 
   def is_in_filter(item_map, filter_word) do
-     item_map |> Map.values() |> Enum.any?(fn x -> to_string(x) =~ filter_word end)
+     item_map |> Map.values() |> Enum.any?(&(to_string(&1) =~ filter_word))
   end
 
-  @spec handle_event(<<_::104>>, map, Phoenix.LiveView.Socket.t()) :: {:noreply, any}
   def handle_event("update_filter", %{"filter" => filter}, socket) do
     socket =
       assign(socket,
